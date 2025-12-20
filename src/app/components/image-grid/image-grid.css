@@ -32,7 +32,7 @@
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  animation: rotateCard 72s infinite;
+  animation: rotateCard 42s infinite;
   animation-fill-mode: both;
 }
 
@@ -49,37 +49,43 @@
   12% {
     transform: rotateY(180deg);
   }
-  99.99% {
+  88% {
     transform: rotateY(180deg);
   }
+  92% {
+    transform: rotateY(360deg);
+  }
+  96% {
+    transform: rotateY(360deg);
+  }
   100% {
-    transform: rotateY(0deg);
+    transform: rotateY(360deg);
   }
 }
 
-/* Immer nur ein Bild rotiert zur Zeit - jedes Bild rotiert 12s, dann wartet es 60s (5 andere × 12s) */
+/* Immer nur ein Bild rotiert zur Zeit - jedes Bild rotiert 6s, dann wartet es 30s (5 andere × 6s) */
 .flip-card:nth-child(1) .flip-card-inner {
   animation-delay: 0s;
 }
 
 .flip-card:nth-child(2) .flip-card-inner {
-  animation-delay: 12s;
+  animation-delay: 6s;
 }
 
 .flip-card:nth-child(3) .flip-card-inner {
-  animation-delay: 24s;
+  animation-delay: 12s;
 }
 
 .flip-card:nth-child(4) .flip-card-inner {
-  animation-delay: 36s;
+  animation-delay: 18s;
 }
 
 .flip-card:nth-child(5) .flip-card-inner {
-  animation-delay: 48s;
+  animation-delay: 24s;
 }
 
 .flip-card:nth-child(6) .flip-card-inner {
-  animation-delay: 60s;
+  animation-delay: 30s;
 }
 
 .flip-card-front,

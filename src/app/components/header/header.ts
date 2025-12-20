@@ -18,5 +18,21 @@ export class HeaderComponent {
   closeMenu() {
     this.isMenuOpen.set(false);
   }
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const header = document.querySelector('.header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; // 20px zusätzlicher Abstand
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    this.closeMenu();
+  }
 }
 

@@ -1,14 +1,44 @@
 .hero-image-container {
+  position: relative;
   width: 100%;
   padding: 0 10vw;
   margin-top: var(--spacing-md);
+  overflow: hidden;
+  height: 60vh;
+  min-height: 400px;
 }
 
 .hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
+  width: 120%;
+  height: 120%;
   object-fit: cover;
-  border-radius: var(--radius-md);
+  display: block;
+  animation: cameraPan 30s ease-in-out infinite;
+  transform-origin: center center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes cameraPan {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  20% {
+    transform: translate(-48%, -52%) scale(1.08);
+  }
+  40% {
+    transform: translate(-52%, -48%) scale(1.12);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  80% {
+    transform: translate(-48%, -52%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 

@@ -1,0 +1,122 @@
+.footer {
+  width: 100%;
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  padding: var(--spacing-3xl) 10vw;
+  margin-top: var(--spacing-4xl);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-lg);
+}
+
+.footer-title {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-3xl));
+  color: #ffffff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  text-align: center;
+}
+
+.footer-title-thin {
+  font-weight: var(--font-weight-light);
+}
+
+.footer-title-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.footer-subtitle {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-base), 1.5vw, var(--font-size-lg));
+  font-weight: var(--font-weight-normal);
+  color: #ffffff;
+  margin: 0;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.footer-address,
+.footer-contact {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-sm), 1.2vw, var(--font-size-base));
+  font-weight: var(--font-weight-normal);
+  color: #ffffff;
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-sm), 1.2vw, var(--font-size-base));
+  font-weight: var(--font-weight-normal);
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity var(--transition-base);
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-separator {
+  color: #ffffff;
+  font-size: clamp(var(--font-size-sm), 1.2vw, var(--font-size-base));
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-2xl) 10vw;
+  }
+  
+  .footer-content {
+    gap: var(--spacing-md);
+  }
+  
+  .footer-info {
+    margin-top: var(--spacing-sm);
+  }
+  
+  .footer-links {
+    margin-top: var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: var(--spacing-xl) 10vw;
+  }
+  
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+

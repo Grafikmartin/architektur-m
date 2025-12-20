@@ -11,10 +11,10 @@
 
     <!-- Desktop Navigation -->
     <nav class="desktop-nav">
-      <a href="#" class="nav-link">Projekte</a>
-      <a href="#" class="nav-link">Büro</a>
-      <a href="#" class="nav-link">Leistungen</a>
-      <a href="#" class="nav-link">Kontakt</a>
+      <a href="#projekte" class="nav-link" (click)="scrollToSection('projekte'); $event.preventDefault()">Projekte</a>
+      <a href="#buero" class="nav-link" (click)="scrollToSection('buero'); $event.preventDefault()">Büro</a>
+      <a href="#leistungen" class="nav-link" (click)="scrollToSection('leistungen'); $event.preventDefault()">Leistungen</a>
+      <a href="#kontakt" class="nav-link" (click)="scrollToSection('kontakt'); $event.preventDefault()">Kontakt</a>
     </nav>
 
     <!-- Hamburger Button -->
@@ -41,10 +41,10 @@
         </button>
       </div>
       <nav class="mobile-nav">
-        <a href="#" class="mobile-nav-link" (click)="closeMenu()">Projekte</a>
-        <a href="#" class="mobile-nav-link" (click)="closeMenu()">Büro</a>
-        <a href="#" class="mobile-nav-link" (click)="closeMenu()">Leistungen</a>
-        <a href="#" class="mobile-nav-link" (click)="closeMenu()">Kontakt</a>
+        <a href="#projekte" class="mobile-nav-link" (click)="scrollToSection('projekte'); $event.preventDefault()">Projekte</a>
+        <a href="#buero" class="mobile-nav-link" (click)="scrollToSection('buero'); $event.preventDefault()">Büro</a>
+        <a href="#leistungen" class="mobile-nav-link" (click)="scrollToSection('leistungen'); $event.preventDefault()">Leistungen</a>
+        <a href="#kontakt" class="mobile-nav-link" (click)="scrollToSection('kontakt'); $event.preventDefault()">Kontakt</a>
       </nav>
     </div>
   }
