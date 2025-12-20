@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header';
+import { ImageGridComponent } from './components/image-grid/image-grid';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, ImageGridComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

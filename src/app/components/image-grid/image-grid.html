@@ -1,0 +1,25 @@
+<div class="image-grid-container">
+  <div class="image-grid">
+    @for (pair of imagePairs; track pair.front + pair.back) {
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img 
+              [src]="'assets/images/architekturfotos/' + pair.front" 
+              [alt]="'Architektur ' + pair.front"
+              class="grid-image"
+            />
+          </div>
+          <div class="flip-card-back">
+            <img 
+              [src]="'assets/images/architekturfotos/' + pair.back" 
+              [alt]="'Architektur ' + pair.back"
+              class="grid-image"
+            />
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
