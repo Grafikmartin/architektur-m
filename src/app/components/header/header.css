@@ -33,13 +33,14 @@
 }
 
 .nav-link {
-  color: var(--color-text);
+  color: var(--color-primary);
   text-decoration: none;
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-normal);
   transition: color var(--transition-base);
   position: relative;
+  padding-top: 35px;
 }
 
 .nav-link:hover {
@@ -52,8 +53,10 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--spacing-sm);
-  color: var(--color-text);
+  padding: 0;
+  padding-top: 40px;
+  padding-bottom: var(--spacing-sm);
+  color: var(--color-primary);
   transition: color var(--transition-base);
 }
 
