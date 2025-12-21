@@ -1,0 +1,193 @@
+.services-grid-container {
+  width: 100%;
+  padding: 0 10vw;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.services-grid-heading {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  line-height: var(--line-height-tight);
+}
+
+.services-grid-intro {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-base), 2vw, var(--font-size-lg));
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid-intro strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  width: 100%;
+  aspect-ratio: 2 / 2;
+}
+
+.service-card {
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  overflow: hidden;
+  position: relative;
+  min-height: 100%;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: var(--radius-md);
+}
+
+.service-card:nth-child(1) {
+  background-color: #559142;
+}
+
+.service-card:nth-child(1)::before {
+  background-image: url('/assets/images/service/entwurf.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+.service-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card:nth-child(2) {
+  background-color: #7d1e0f;
+}
+
+.service-card:nth-child(2)::before {
+  background-image: url('/assets/images/service/genehmigung.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+.service-card:nth-child(3) {
+  background-color: #d18a29;
+}
+
+.service-card:nth-child(3)::before {
+  background-image: url('/assets/images/service/projekt.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+.service-card:nth-child(4) {
+  background-color: #512f7f;
+}
+
+.service-card:nth-child(4)::before {
+  background-image: url('/assets/images/service/Weiterbauen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  flex-shrink: 0;
+}
+
+.service-icon {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--color-background);
+  opacity: 0.9;
+}
+
+.service-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.service-card-title {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-lg), 2.5vw, var(--font-size-2xl));
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-background);
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-tight);
+  text-align: center;
+}
+
+.service-card-text {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-sm), 1.5vw, var(--font-size-base));
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-background);
+  text-align: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    aspect-ratio: auto;
+    gap: var(--spacing-md);
+  }
+  
+  .services-grid-container {
+    padding: 0 10vw;
+  }
+  
+  .service-card {
+    min-height: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .services-grid-container {
+    padding: 0 5vw;
+  }
+  
+  .service-card {
+    padding: var(--spacing-md);
+  }
+}
+

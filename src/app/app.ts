@@ -5,11 +5,12 @@ import { ImageGridComponent } from './components/image-grid/image-grid';
 import { IntroTextComponent } from './components/intro-text/intro-text';
 import { AboutTextComponent } from './components/about-text/about-text';
 import { ServicesComponent } from './components/services/services';
+import { ServicesGridComponent } from './components/services-grid/services-grid';
 import { FooterComponent } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, ImageGridComponent, IntroTextComponent, AboutTextComponent, ServicesComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, ImageGridComponent, IntroTextComponent, AboutTextComponent, ServicesComponent, ServicesGridComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
