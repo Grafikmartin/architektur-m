@@ -2,9 +2,26 @@
   <div class="about-text-container">
     <h2 class="about-heading">Büro</h2>
     
-    <p class="about-text">
-      ARCHITEKTUR <strong>M</strong> ist ein fiktives Architekturbüro mit Fokus auf präzise Entwurfsarbeit und kontextbezogene Lösungen. Unsere Projekte entstehen aus der sorgfältigen Analyse des Ortes, der Nutzung und der baulichen Rahmenbedingungen. Wir begleiten Bauvorhaben von der ersten Idee bis zur Umsetzung und verstehen Architektur als klar strukturierten Prozess, in dem Entwurf, Konstruktion und Material in einem ausgewogenen Verhältnis stehen. Ein bewusster Umgang mit Ressourcen, der Weiterbau im Bestand und die Entwicklung langlebiger, nachhaltiger Lösungen sind dabei zentrale Bestandteile unserer Arbeit.
-    </p>
+    <div class="about-text-part" [class.visible]="isPart1Visible">
+      <h3 class="about-part-heading">Haltung / Position</h3>
+      <p class="about-text">
+        ARCHITEKTUR <strong>M</strong> ist ein fiktives Architekturbüro mit Schwerpunkt auf präziser Entwurfsarbeit und kontextbezogenen Lösungen. Architektur verstehen wir als Ergebnis einer klaren Haltung: reduziert, strukturiert und aus dem Ort heraus entwickelt. Jedes Projekt beginnt mit dem genauen Lesen der Situation und der bewussten Entscheidung für das Wesentliche.
+      </p>
+    </div>
+    
+    <div class="about-text-part" [class.visible]="isPart2Visible">
+      <h3 class="about-part-heading">Methode / Prozess</h3>
+      <p class="about-text">
+        Unsere Projekte entstehen aus der sorgfältigen Analyse von Ort, Nutzung und baulichen Rahmenbedingungen. Entwurf, Konstruktion und Material begreifen wir als gleichwertige Bestandteile eines klar strukturierten Prozesses. Von der ersten Idee bis zur Umsetzung begleiten wir Bauvorhaben kontinuierlich und entwickeln Lösungen, die räumlich, konstruktiv und funktional präzise aufeinander abgestimmt sind.
+      </p>
+    </div>
+    
+    <div class="about-text-part" [class.visible]="isPart3Visible">
+      <h3 class="about-part-heading">Verantwortung / Zukunft</h3>
+      <p class="about-text">
+        Ein bewusster Umgang mit Ressourcen prägt unsere Arbeit ebenso wie der Weiterbau im Bestand und die Entwicklung langlebiger, nachhaltiger Architekturen. Durch sorgfältige Eingriffe, robuste Materialien und klare Details entstehen Projekte, die den Bestand respektieren, langfristig funktionieren und ihren Kontext weiterdenken.
+      </p>
+    </div>
   </div>
 </section>
 

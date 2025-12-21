@@ -15,7 +15,26 @@
   font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  line-height: var(--line-height-tight);
+}
+
+.about-text-part {
+  margin-bottom: var(--spacing-3xl);
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+}
+
+.about-text-part:last-child {
+  margin-bottom: 0;
+}
+
+.about-part-heading {
+  font-family: var(--font-family);
+  font-size: clamp(var(--font-size-xl), 2.5vw, var(--font-size-2xl));
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
   line-height: var(--line-height-tight);
 }
 
@@ -25,15 +44,130 @@
   font-weight: var(--font-weight-normal);
   color: var(--color-text);
   line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-lg);
 }
 
 .about-text strong {
   font-weight: var(--font-weight-bold);
 }
 
-.about-text:last-child {
-  margin-bottom: 0;
+/* Part 1: comes from right, goes slightly too far, then settles */
+.about-text-part:nth-child(2) {
+  transform: translateX(150vw);
+}
+
+.about-text-part:nth-child(2).visible {
+  opacity: 1;
+  animation: slideInFromRight1 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.about-text-part:nth-child(2):not(.visible) {
+  animation: slideOutToRight 1s ease-in forwards;
+}
+
+@keyframes slideInFromRight1 {
+  0% {
+    transform: translateX(150vw);
+    opacity: 0;
+  }
+  75% {
+    transform: translateX(-4vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150vw);
+    opacity: 0;
+  }
+}
+
+/* Part 2: comes from left, goes slightly too far, then settles */
+.about-text-part:nth-child(3) {
+  transform: translateX(-150vw);
+}
+
+.about-text-part:nth-child(3).visible {
+  opacity: 1;
+  animation: slideInFromLeft 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.about-text-part:nth-child(3):not(.visible) {
+  animation: slideOutToLeft 1s ease-in forwards;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-150vw);
+    opacity: 0;
+  }
+  75% {
+    transform: translateX(4vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-150vw);
+    opacity: 0;
+  }
+}
+
+/* Part 3: comes from right, goes slightly too far, then settles */
+.about-text-part:nth-child(4) {
+  transform: translateX(150vw);
+}
+
+.about-text-part:nth-child(4).visible {
+  opacity: 1;
+  animation: slideInFromRight3 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.about-text-part:nth-child(4):not(.visible) {
+  animation: slideOutToRight3 1s ease-in forwards;
+}
+
+@keyframes slideInFromRight3 {
+  0% {
+    transform: translateX(150vw);
+    opacity: 0;
+  }
+  75% {
+    transform: translateX(-4vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight3 {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150vw);
+    opacity: 0;
+  }
 }
 
 /* Responsive */
@@ -42,8 +176,16 @@
     padding: var(--spacing-3xl) 10vw;
   }
   
-  .about-text {
-    margin-bottom: var(--spacing-md);
+  .about-text-part {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .about-text-part:nth-child(2) {
+    transform: translateX(100vw);
+  }
+  
+  .about-text-part:nth-child(3) {
+    transform: translateX(-100vw);
   }
 }
 
