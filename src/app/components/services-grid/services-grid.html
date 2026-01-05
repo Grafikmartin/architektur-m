@@ -1,0 +1,24 @@
+<section class="services-grid-section" id="leistungen">
+  <div class="services-grid-container">
+    <h2>Leistungen</h2>
+    
+    <p class="services-grid-intro">
+      ARCHITEKTUR <strong>M</strong> versteht Planung als durchgängigen Prozess von Analyse, Entwurf und Umsetzung. Wir begleiten Projekte in allen Phasen und entwickeln Lösungen, die funktional, konstruktiv und gestalterisch überzeugen.
+    </p>
+    
+    <div class="services-grid">
+      @for (service of services; track service.title) {
+        <div class="service-card">
+          <div class="service-icon-wrapper">
+            <span class="material-icons service-icon">{{ service.icon }}</span>
+          </div>
+          <div class="service-content">
+            <h3 class="service-card-title">{{ service.title }}</h3>
+            <p class="service-card-text">{{ service.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
