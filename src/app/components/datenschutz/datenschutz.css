@@ -2,12 +2,37 @@
   width: 100%;
   padding: var(--spacing-4xl) 10vw;
   background-color: var(--color-background);
-  min-height: 80vh;
+  min-height: 100vh;
 }
 
 .legal-container {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  transition: color var(--transition-base);
+  margin-bottom: var(--spacing-lg);
+}
+
+.back-button:hover {
+  color: var(--color-primary);
+}
+
+.back-button .material-icons {
+  font-size: 32px;
 }
 
 .legal-content {
@@ -20,6 +45,7 @@
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
   margin-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
   text-align: center;
   line-height: var(--line-height-tight);
 }

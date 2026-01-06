@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header';
 import { ImageGridComponent } from './components/image-grid/image-grid';
 import { IntroTextComponent } from './components/intro-text/intro-text';
@@ -7,13 +8,28 @@ import { AboutTextComponent } from './components/about-text/about-text';
 import { ServicesComponent } from './components/services/services';
 import { ServicesGridComponent } from './components/services-grid/services-grid';
 import { FooterComponent } from './components/footer/footer';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, ImageGridComponent, IntroTextComponent, AboutTextComponent, ServicesComponent, ServicesGridComponent, FooterComponent],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, ImageGridComponent, IntroTextComponent, AboutTextComponent, ServicesComponent, ServicesGridComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('my-angular-app');
+  isLegalPage = signal(false);
+
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        const url = event.urlAfterRedirects || event.url;
+        this.isLegalPage.set(url.includes('/impressum') || url.includes('/datenschutz'));
+      });
+    
+    // Prüfe initial
+    const currentUrl = this.router.url;
+    this.isLegalPage.set(currentUrl.includes('/impressum') || currentUrl.includes('/datenschutz'));
+  }
 }

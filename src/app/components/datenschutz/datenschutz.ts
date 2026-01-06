@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-datenschutz',
@@ -9,5 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './datenschutz.css'
 })
 export class DatenschutzComponent {
+  constructor(private location: Location) {}
+
+  goBack() {
+    this.location.back();
+  }
 }
 

@@ -1,21 +1,23 @@
-<app-header></app-header>
+@if (!isLegalPage()) {
+  <app-header></app-header>
 
-<div class="hero-image-container">
-  <img 
-    src="assets/images/Header/architecture-1.jpg" 
-    alt="Architektur" 
-    class="hero-image"
-  />
-</div>
+  <div class="hero-image-container">
+    <img 
+      src="assets/images/Header/architecture-1.jpg" 
+      alt="Architektur" 
+      class="hero-image"
+    />
+  </div>
 
-<app-intro-text></app-intro-text>
+  <app-intro-text></app-intro-text>
 
-<app-image-grid></app-image-grid>
+  <app-image-grid></app-image-grid>
 
-<app-about-text></app-about-text>
+  <app-about-text></app-about-text>
 
-<app-services-grid></app-services-grid>
+  <app-services-grid></app-services-grid>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+}
 
 <router-outlet />
