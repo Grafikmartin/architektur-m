@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header';
@@ -16,7 +16,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('my-angular-app');
   isLegalPage = signal(false);
 
@@ -29,25 +29,37 @@ export class App {
       .subscribe(() => {
         this.checkRoute();
       });
-    
-    // Prüfe nach kurzer Verzögerung, damit Router initialisiert ist
-    setTimeout(() => {
-      this.checkRoute();
-    }, 0);
+  }
+
+  ngOnInit() {
+    // Prüfe Route nach Initialisierung
+    this.checkRoute();
   }
 
   private checkRoute() {
-    const routerUrl = (this.router.url || '').toLowerCase();
-    const hash = (window.location.hash || '').toLowerCase();
-    
-    // Prüfe nur auf exakte Legal-Routen
-    const isLegal = routerUrl === '/impressum' || 
-                   routerUrl === '/datenschutz' ||
-                   routerUrl === 'impressum' ||
-                   routerUrl === 'datenschutz' ||
-                   hash === '#/impressum' ||
-                   hash === '#/datenschutz';
-    
-    this.isLegalPage.set(isLegal);
+    // Warte kurz, damit Router initialisiert ist
+    setTimeout(() => {
+      const routerUrl = (this.router.url || '').toLowerCase().trim();
+      const hash = (window.location.hash || '').toLowerCase().trim();
+      const pathname = (window.location.pathname || '').toLowerCase().trim();
+      
+      // Kombiniere alle URL-Teile für robuste Prüfung
+      const fullUrl = (routerUrl + ' ' + hash + ' ' + pathname).toLowerCase();
+      
+      // Prüfe nur auf explizite Legal-Routen
+      // Standardmäßig: Hauptseite (isLegalPage = false)
+      const isLegal = fullUrl.includes('/impressum') || 
+                     fullUrl.includes('/datenschutz') ||
+                     fullUrl.includes('#/impressum') || 
+                     fullUrl.includes('#/datenschutz') ||
+                     routerUrl === '/impressum' ||
+                     routerUrl === '/datenschutz' ||
+                     routerUrl === 'impressum' ||
+                     routerUrl === 'datenschutz' ||
+                     hash === '#/impressum' ||
+                     hash === '#/datenschutz';
+      
+      this.isLegalPage.set(isLegal);
+    }, 100);
   }
 }
