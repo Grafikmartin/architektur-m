@@ -9,31 +9,34 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script>
-    // GitHub Pages 404 Fallback - leite alle Anfragen an index.html weiter
-    // und behalte die ursprüngliche Route bei, damit Angular Router sie verarbeiten kann
-    var path = window.location.pathname;
-    var search = window.location.search;
-    var hash = window.location.hash;
-    
-    // Entferne /architektur-m/ vom Anfang des Pfads, falls vorhanden
-    var cleanPath = path.replace(/^\/architektur-m\//, '');
-    
-    // Wenn es nicht index.html ist, leite zu index.html mit der Route als Hash weiter
-    if (cleanPath && cleanPath !== 'index.html' && cleanPath !== '404.html') {
-      var newPath = '/architektur-m/index.html';
-      if (search) newPath += search;
-      // Füge die Route als Hash hinzu, damit Angular Router sie verarbeiten kann
-      if (cleanPath) {
-        newPath += '#' + cleanPath;
+    // GitHub Pages 404 Fallback
+    // Extrahiere die ursprüngliche Route aus der URL und leite zu index.html mit Hash weiter
+    (function() {
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      
+      // Entferne /architektur-m/ und 404.html vom Pfad
+      var cleanPath = path.replace(/^\/architektur-m\//, '').replace(/\/?404\.html$/, '');
+      
+      // Wenn wir auf 404.html sind, versuche die Route aus dem Referrer zu extrahieren
+      if (path.includes('404.html') && document.referrer) {
+        try {
+          var referrerUrl = new URL(document.referrer);
+          if (referrerUrl.pathname.startsWith('/architektur-m/')) {
+            cleanPath = referrerUrl.pathname.replace(/^\/architektur-m\//, '').replace(/\/?index\.html$/, '');
+          }
+        } catch(e) {}
       }
-      if (hash && !hash.startsWith('#' + cleanPath)) {
-        newPath += hash;
+      
+      // Wenn wir eine Route haben, leite zu index.html mit Hash-basierter Route weiter
+      if (cleanPath && cleanPath !== 'index.html' && cleanPath !== '') {
+        window.location.replace('/architektur-m/index.html' + (search || '') + '#/' + cleanPath + (hash || ''));
+      } else {
+        // Keine Route gefunden, lade einfach index.html
+        window.location.replace('/architektur-m/index.html' + (search || '') + (hash || ''));
       }
-      window.location.replace(newPath);
-    } else {
-      // Falls es bereits index.html ist, lade einfach index.html
-      window.location.replace('/architektur-m/index.html' + (search || '') + (hash || ''));
-    }
+    })();
   </script>
 </head>
 <body>
@@ -44,4 +47,3 @@
   </script>
 </body>
 </html>
-
