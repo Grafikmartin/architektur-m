@@ -21,15 +21,19 @@ export class App {
   isLegalPage = signal(false);
 
   constructor(private router: Router) {
+    // Prüfe initial
+    this.checkRoute();
+    
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        const url = event.urlAfterRedirects || event.url;
-        this.isLegalPage.set(url.includes('/impressum') || url.includes('/datenschutz'));
+      .subscribe(() => {
+        this.checkRoute();
       });
-    
-    // Prüfe initial
-    const currentUrl = this.router.url;
-    this.isLegalPage.set(currentUrl.includes('/impressum') || currentUrl.includes('/datenschutz'));
+  }
+
+  private checkRoute() {
+    const url = this.router.url || window.location.hash || window.location.pathname || '';
+    const isLegal = url.includes('impressum') || url.includes('datenschutz');
+    this.isLegalPage.set(isLegal);
   }
 }
