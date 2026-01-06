@@ -21,19 +21,33 @@ export class App {
   isLegalPage = signal(false);
 
   constructor(private router: Router) {
-    // Prüfe initial
-    this.checkRoute();
+    // Initial: Hauptseite anzeigen (isLegalPage = false)
+    // Nur bei expliziten Legal-Routen auf true setzen
     
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.checkRoute();
       });
+    
+    // Prüfe nach kurzer Verzögerung, damit Router initialisiert ist
+    setTimeout(() => {
+      this.checkRoute();
+    }, 0);
   }
 
   private checkRoute() {
-    const url = this.router.url || window.location.hash || window.location.pathname || '';
-    const isLegal = url.includes('impressum') || url.includes('datenschutz');
+    const routerUrl = (this.router.url || '').toLowerCase();
+    const hash = (window.location.hash || '').toLowerCase();
+    
+    // Prüfe nur auf exakte Legal-Routen
+    const isLegal = routerUrl === '/impressum' || 
+                   routerUrl === '/datenschutz' ||
+                   routerUrl === 'impressum' ||
+                   routerUrl === 'datenschutz' ||
+                   hash === '#/impressum' ||
+                   hash === '#/datenschutz';
+    
     this.isLegalPage.set(isLegal);
   }
 }
